@@ -29,19 +29,23 @@ extension FibonacciInteractor: FibonacciInteractorProtocol {
                                      repeats: true)
     }
     
-    @objc private func calculateFibonacci() {
+    @objc
+    private func calculateFibonacci() {
         !overflow
             ? findFibonacci(for: index)
             : completeFibonacci()
     }
     
     private func findFibonacci(for value: Int) {
-        let result = fibonacci(Int(UInt64(index)))
-        guard let value = result.0 else { return }
-        values.append(value)
-        presenter.refresh(with: FibonacciViewModel(values: values))
-        overflow = result.1
-        index+=1
+        DispatchQueue.global().async { [weak self] in
+            guard let strongRef = self else { return }
+            let result = strongRef.fibonacci(Int(UInt64(strongRef.index)))
+            guard let value = result.0 else { return }
+            strongRef.values.append(value)
+            strongRef.presenter.refresh(with: FibonacciViewModel(values: strongRef.values))
+            strongRef.overflow = result.1
+            strongRef.index+=1
+        }
     }
     
     private func completeFibonacci() {
