@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FibonacciRouterProtocol {
-    
+    func presentCompletionAlert()
 }
 
 class FibonacciRouter {
@@ -28,6 +28,12 @@ class FibonacciRouter {
 
 extension FibonacciRouter: FibonacciRouterProtocol {
     
+    func presentCompletionAlert() {
+        let alert = UIAlertController(title: "Fibonacci", message: "The Fibonacci sequnce is completed for value less than \(Int64.max)", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        viewController.present(alert, animated: true)
+    }
 }
 
 struct FibonacciWireFrame {

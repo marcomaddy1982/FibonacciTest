@@ -12,45 +12,60 @@ protocol FibonacciInteractorProtocol {
 }
 
 class FibonacciInteractor {
-    weak var presenter: FibonacciPresenterProtocol!
     private var values: [Int] = []
+    private var index: Int = 1
+    private var timer: Timer?
+    private var overflow = false
+    
+    weak var presenter: FibonacciPresenterProtocol!
 }
 
 extension FibonacciInteractor: FibonacciInteractorProtocol {
     func loadFibonacci() {
-        var index = 0
-        var overflow = false
+        timer = Timer.scheduledTimer(timeInterval: 0.1,
+                                     target: self,
+                                     selector: #selector(calculateFibonacci),
+                                     userInfo: nil,
+                                     repeats: true)
+    }
+    
+    @objc private func calculateFibonacci() {
+        !overflow
+            ? findFibonacci(for: index)
+            : completeFibonacci()
+    }
+    
+    private func findFibonacci(for value: Int) {
+        let result = fibonacci(Int(UInt64(index)))
+        values.append(result.0)
+        presenter.refresh(with: FibonacciViewModel(values: values))
+        overflow = result.1
+        index+=1
+    }
+    
+    private func completeFibonacci() {
+        timer?.invalidate()
+        presenter.fibonacciDidComplete()
+    }
+    
+    private func fibonacci(_ n: Int) -> (Int, Bool) {
+        var a = 0
+        var b = 1
+        guard n > 1 else { return (a, false) }
 
-        DispatchQueue.global().async { [weak self] in
-            while (!overflow) {
-                let result = fib(Int(UInt64(index)))
-                self?.values.append(result.0)
-                self?.presenter.refresh(with: FibonacciViewModel(values: self?.values ?? []))
-                index = index + 1
-                overflow = result.1
+        var overflow = false
+        
+        (2...n).forEach { _ in
+            let result = a.addingReportingOverflow(b)
+            overflow = result.overflow
+            if !result.overflow {
+                (a, b) = (a + b, a)
             }
         }
+        return (a, overflow)
     }
 }
 
 struct FibonacciViewModel {
     var values: [Int] = []
-}
-
-func fib(_ n: Int) -> (Int, Bool) {
-    var a = 0
-    var b = 1
-    guard n > 1 else { return (a, false)  }
-
-    var overflow = false
-    
-    (2...n).forEach { _ in
-        let result = a.addingReportingOverflow(b)
-        overflow = result.overflow
-        if !result.overflow {
-            (a, b) = (a + b, a)
-        }
-    }
-
-    return (a, overflow)
 }
