@@ -32,7 +32,7 @@ class FibonacciViewController: UIViewController {
 
     private func configureTableView() {
         tableView.estimatedRowHeight = FibonacciCellView.height
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = FibonacciCellView.height
         tableView.register(UINib(nibName: "FibonacciCellView", bundle: nil),
                            forCellReuseIdentifier: "FibonacciCellView")
     }

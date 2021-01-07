@@ -8,7 +8,7 @@
 import UIKit
 
 extension FibonacciCellView {
-    public static let height: CGFloat = 60.0
+    public static let height: CGFloat = 44.0
 }
 
 class FibonacciCellView: UITableViewCell {
