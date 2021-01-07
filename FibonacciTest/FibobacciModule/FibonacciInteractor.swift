@@ -37,7 +37,8 @@ extension FibonacciInteractor: FibonacciInteractorProtocol {
     
     private func findFibonacci(for value: Int) {
         let result = fibonacci(Int(UInt64(index)))
-        values.append(result.0)
+        guard let value = result.0 else { return }
+        values.append(value)
         presenter.refresh(with: FibonacciViewModel(values: values))
         overflow = result.1
         index+=1
@@ -48,7 +49,7 @@ extension FibonacciInteractor: FibonacciInteractorProtocol {
         presenter.fibonacciDidComplete()
     }
     
-    private func fibonacci(_ n: Int) -> (Int, Bool) {
+    private func fibonacci(_ n: Int) -> (Int?, Bool) {
         var a = 0
         var b = 1
         guard n > 1 else { return (a, false) }
@@ -62,7 +63,8 @@ extension FibonacciInteractor: FibonacciInteractorProtocol {
                 (a, b) = (a + b, a)
             }
         }
-        return (a, overflow)
+        
+        return (!overflow ? a : nil, overflow)
     }
 }
 
