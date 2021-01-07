@@ -14,7 +14,7 @@
 		540CF32125A76A9500A4AF74 /* FibonacciRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CF32025A76A9500A4AF74 /* FibonacciRouter.swift */; };
 		54822CC025A74EF900CD7E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54822CBF25A74EF900CD7E38 /* AppDelegate.swift */; };
 		54822CC225A74EF900CD7E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54822CC125A74EF900CD7E38 /* SceneDelegate.swift */; };
-		54822CC425A74EF900CD7E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54822CC325A74EF900CD7E38 /* ViewController.swift */; };
+		54822CC425A74EF900CD7E38 /* FibonacciViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54822CC325A74EF900CD7E38 /* FibonacciViewController.swift */; };
 		54822CC725A74EF900CD7E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54822CC525A74EF900CD7E38 /* Main.storyboard */; };
 		54822CC925A74EFA00CD7E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54822CC825A74EFA00CD7E38 /* Assets.xcassets */; };
 		54822CCC25A74EFA00CD7E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54822CCA25A74EFA00CD7E38 /* LaunchScreen.storyboard */; };
@@ -48,7 +48,7 @@
 		54822CBC25A74EF900CD7E38 /* FibonacciTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FibonacciTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54822CBF25A74EF900CD7E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54822CC125A74EF900CD7E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		54822CC325A74EF900CD7E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		54822CC325A74EF900CD7E38 /* FibonacciViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FibonacciViewController.swift; sourceTree = "<group>"; };
 		54822CC625A74EF900CD7E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54822CC825A74EFA00CD7E38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54822CCB25A74EFA00CD7E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				54822CF325A7501E00CD7E38 /* CellView */,
-				54822CC325A74EF900CD7E38 /* ViewController.swift */,
+				54822CC325A74EF900CD7E38 /* FibonacciViewController.swift */,
 				540CF31625A767BB00A4AF74 /* FibonacciPresenter.swift */,
 				540CF31B25A7681400A4AF74 /* FibonacciInteractor.swift */,
 				540CF32025A76A9500A4AF74 /* FibonacciRouter.swift */,
@@ -290,7 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54822CC425A74EF900CD7E38 /* ViewController.swift in Sources */,
+				54822CC425A74EF900CD7E38 /* FibonacciViewController.swift in Sources */,
 				540CF30B25A755EA00A4AF74 /* FibonacciCellView.swift in Sources */,
 				540CF32125A76A9500A4AF74 /* FibonacciRouter.swift in Sources */,
 				54822CC025A74EF900CD7E38 /* AppDelegate.swift in Sources */,

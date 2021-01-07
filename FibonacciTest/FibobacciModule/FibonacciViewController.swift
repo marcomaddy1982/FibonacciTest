@@ -11,7 +11,7 @@ protocol FibonacciViewProtocol: class {
     func refresh(with viewModel: FibonacciViewModel)
 }
 
-class ViewController: UIViewController {
+class FibonacciViewController: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
     var presenter: FibonacciPresenterProtocol!
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension FibonacciViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return values.count
@@ -52,7 +52,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController: FibonacciViewProtocol {
+extension FibonacciViewController: FibonacciViewProtocol {
     func refresh(with viewModel: FibonacciViewModel) {
         self.values = viewModel.values
     }

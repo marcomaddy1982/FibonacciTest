@@ -19,7 +19,7 @@ class FibonacciRouter {
     }
 
     private let builder: FibonacciWireFrame
-    private weak var _viewController: ViewController?
+    private weak var _viewController: FibonacciViewController?
 
     init() {
         builder = FibonacciWireFrame()
@@ -38,9 +38,9 @@ extension FibonacciRouter: FibonacciRouterProtocol {
 
 struct FibonacciWireFrame {
 
-    func build(router: FibonacciRouterProtocol) -> ViewController {
+    func build(router: FibonacciRouterProtocol) -> FibonacciViewController {
 
-        let viewController = ViewController.instantiateFromStoryboard(withName: "Main")
+        let viewController = FibonacciViewController.instantiateFromStoryboard(withName: "Main")
         let presenter = FibonacciPresenter()
         let interactor = FibonacciInteractor()
 
