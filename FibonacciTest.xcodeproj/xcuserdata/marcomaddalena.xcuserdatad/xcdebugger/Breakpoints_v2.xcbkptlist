@@ -20,5 +20,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DCA4B6E-C8CE-4573-9BFA-F04F5B62FE7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FibonacciTest/FibobacciModule/FibonacciRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "presentCompletionAlert()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0DCA4B6E-C8CE-4573-9BFA-F04F5B62FE7C - f65389e0e391834d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FibonacciTest.FibonacciRouter.presentCompletionAlert() -&gt; ()"
+                  moduleName = "FibonacciTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcomaddalena/Documents/fibonacciTest/FibonacciTest/FibobacciModule/FibonacciRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "135">
+               </Location>
+               <Location
+                  uuid = "0DCA4B6E-C8CE-4573-9BFA-F04F5B62FE7C - ce8fec625f6aa479"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in FibonacciTest.FibonacciRouter.presentCompletionAlert() -&gt; ()"
+                  moduleName = "FibonacciTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcomaddalena/Documents/fibonacciTest/FibonacciTest/FibobacciModule/FibonacciRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8EE71B7D-9B1C-41D7-A78D-FFA29D997EDB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FibonacciTest/FibobacciModule/FibonacciPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "fibonacciDidComplete()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2513E3CB-10FB-44F8-91AE-8414AAD3F1D8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FibonacciTest/FibobacciModule/FibonacciInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "completeFibonacci()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

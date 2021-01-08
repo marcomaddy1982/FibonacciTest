@@ -7,30 +7,26 @@
 
 import Foundation
 
-struct Fibonacci {
-    
-    var n: Int = 0
+class Fibonacci {
     var value: Int?
     var overflow: Bool = false
     
-    init(n: Int) {
-        self.n = n
-        
+    func calculate(for n: Int) {
         var a = 0
         var b = 1
         guard n > 1 else {
-            self.value = a
-            self.overflow = false
+            value = a
+            overflow = false
             return
         }
         
         (2...n).forEach { _ in
             let result = a.addingReportingOverflow(b)
-            self.overflow = result.overflow
+            overflow = result.overflow
             if !result.overflow {
                 (a, b) = (a + b, a)
             }
-            self.value = !overflow ? a : nil
+            value = !overflow ? a : nil
         }
     }
 }

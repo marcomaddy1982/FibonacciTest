@@ -15,13 +15,7 @@ class FibonacciViewController: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
     var presenter: FibonacciPresenterProtocol!
-    private var values: [Int] = [] {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
-            }
-        }
-    }
+    private var values: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,5 +49,17 @@ extension FibonacciViewController: UITableViewDelegate, UITableViewDataSource {
 extension FibonacciViewController: FibonacciViewProtocol {
     func refresh(with viewModel: FibonacciViewModel) {
         self.values = viewModel.values
+        values = viewModel.values
+        insertFibonacciValue()
+    }
+    
+    private func insertFibonacciValue() {
+        DispatchQueue.main.async { [weak self] in
+            guard let index = self?.values.count else { return }
+            self?.tableView.beginUpdates()
+            self?.tableView.insertRows(at: [IndexPath(row: index - 1, section: 0)],
+                                       with: .fade)
+            self?.tableView.endUpdates()
+        }
     }
 }

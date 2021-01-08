@@ -12,6 +12,7 @@ protocol FibonacciInteractorProtocol {
 }
 
 class FibonacciInteractor {
+    private var fibonacci = Fibonacci()
     private var values: [Int] = []
     private var index: Int = 1
     private var timer: Timer?
@@ -39,11 +40,14 @@ extension FibonacciInteractor: FibonacciInteractorProtocol {
     private func findFibonacci(for value: Int) {
         DispatchQueue.global().async { [weak self] in
             guard let strongRef = self else { return }
-            let fibonaci = Fibonacci(n: strongRef.index)
-            guard let value = fibonaci.value else { return }
+            strongRef.fibonacci.calculate(for: strongRef.index)
+            guard let value = strongRef.fibonacci.value else {
+                strongRef.overflow = true
+                return
+            }
             strongRef.values.append(value)
             strongRef.presenter.refresh(with: FibonacciViewModel(values: strongRef.values))
-            strongRef.overflow = fibonaci.overflow
+            strongRef.overflow = strongRef.fibonacci.overflow
             strongRef.index+=1
         }
     }

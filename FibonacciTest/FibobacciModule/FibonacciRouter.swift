@@ -29,11 +29,13 @@ class FibonacciRouter {
 extension FibonacciRouter: FibonacciRouterProtocol {
     
     func presentCompletionAlert() {
-        let alert = UIAlertController(title: "Fibonacci",
-                                      message: "The Fibonacci sequnce is completed for value less than \(Int64.max)",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        viewController.present(alert, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(title: "Fibonacci",
+                                          message: "The Fibonacci sequnce is completed for value less than \(Int64.max)",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self?.viewController.present(alert, animated: true)
+        }
     }
 }
 
