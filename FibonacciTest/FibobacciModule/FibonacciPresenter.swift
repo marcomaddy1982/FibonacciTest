@@ -9,6 +9,7 @@ import Foundation
 
 protocol FibonacciPresenterProtocol: class {
     func viewDidLoad()
+    func fibonacciDidComplete()
     func refresh(with viewModel: FibonacciViewModel)
 }
 
@@ -20,11 +21,15 @@ class FibonacciPresenter {
 }
 
 extension FibonacciPresenter: FibonacciPresenterProtocol {
-    func refresh(with viewModel: FibonacciViewModel) {
-        viewController.refresh(with: viewModel)
-    }
-    
     func viewDidLoad() {
         interactor.loadFibonacci()
+    }
+    
+    func fibonacciDidComplete() {
+        router.presentCompletionAlert()
+    }
+    
+    func refresh(with viewModel: FibonacciViewModel) {
+        viewController.refresh(with: viewModel)
     }
 }

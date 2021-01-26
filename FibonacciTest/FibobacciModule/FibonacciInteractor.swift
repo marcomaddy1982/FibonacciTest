@@ -12,45 +12,48 @@ protocol FibonacciInteractorProtocol {
 }
 
 class FibonacciInteractor {
-    weak var presenter: FibonacciPresenterProtocol!
+    private var fibonacci = Fibonacci()
     private var values: [Int] = []
+    private var index: Int = 1
+    private var timer: Timer?
+    private var overflow = false
+    
+    weak var presenter: FibonacciPresenterProtocol!
 }
 
 extension FibonacciInteractor: FibonacciInteractorProtocol {
     func loadFibonacci() {
-        var index = 0
-        var overflow = false
-
-        DispatchQueue.global().async { [weak self] in
-            while (!overflow) {
-                let result = fib(Int(UInt64(index)))
-                self?.values.append(result.0)
-                self?.presenter.refresh(with: FibonacciViewModel(values: self?.values ?? []))
-                index = index + 1
-                overflow = result.1
-            }
-        }
+        timer = Timer.scheduledTimer(timeInterval: 0.1,
+                                     target: self,
+                                     selector: #selector(calculateFibonacci),
+                                     userInfo: nil,
+                                     repeats: true)
     }
-}
-
-struct FibonacciViewModel {
-    var values: [Int] = []
-}
-
-func fib(_ n: Int) -> (Int, Bool) {
-    var a = 0
-    var b = 1
-    guard n > 1 else { return (a, false)  }
-
-    var overflow = false
     
-    (2...n).forEach { _ in
-        let result = a.addingReportingOverflow(b)
-        overflow = result.overflow
-        if !result.overflow {
-            (a, b) = (a + b, a)
+    @objc
+    private func calculateFibonacci() {
+        !overflow
+            ? findFibonacci(for: index)
+            : completeFibonacci()
+    }
+    
+    private func findFibonacci(for value: Int) {
+        DispatchQueue.global().async { [weak self] in
+            guard let strongRef = self else { return }
+            strongRef.fibonacci.calculate(for: strongRef.index)
+            guard let value = strongRef.fibonacci.value else {
+                strongRef.overflow = true
+                return
+            }
+            strongRef.values.append(value)
+            strongRef.presenter.refresh(with: FibonacciViewModel(values: strongRef.values))
+            strongRef.overflow = strongRef.fibonacci.overflow
+            strongRef.index+=1
         }
     }
-
-    return (a, overflow)
+    
+    private func completeFibonacci() {
+        timer?.invalidate()
+        presenter.fibonacciDidComplete()
+    }
 }
